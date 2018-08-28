@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+
+<body>
+<span style="color: red" id="msg"></span>
+<form action="/login.do" method="post">
+    <div><label> User Name : <input type="text" name="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
+    <input type="checkbox" name="remember-me" value="true" th:checked="checked"/><p>Remember me</p>
+</form>
+
+</body>
+<script type="text/javascript">
+    var url=location.href
+    var param=url.split("?")[1];
+    console.log(param);
+    if (param){
+        var p=param.split("&");
+        var msg=p[0].split("=")[1];
+        document.getElementById("msg").innerHTML=msg;
+    }
+</script>
+</html>
